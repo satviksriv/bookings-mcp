@@ -1,0 +1,39 @@
+{
+  "name": "bookings-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that lets Claude run a service business front desk: customers, availability, bookings and revenue reports.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "bookings",
+    "crm"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  },
+  "type": "module",
+  "bin": {
+    "bookings-mcp": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
