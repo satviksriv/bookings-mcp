@@ -61,7 +61,8 @@ export function seedDemoData(db: DB, today: string): void {
     const created = `${addDays(today, -90)}T09:00`;
     for (let i = 0; i < 40; i++) {
       const first = FIRST[i % FIRST.length];
-      const last = LAST[(i * 7) % LAST.length];
+      // Offset the second pass through FIRST so every full name is unique.
+      const last = LAST[(i * 7 + (i >= FIRST.length ? 5 : 0)) % LAST.length];
       const email = `${first}.${last}${i}@example.com`.toLowerCase();
       const phone = `+1-555-01${String(i).padStart(2, "0")}`;
       customerIds.push(

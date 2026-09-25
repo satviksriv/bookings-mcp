@@ -52,6 +52,11 @@ describe("seed data", () => {
     expect(sig(other)).toEqual(sig(db));
   });
 
+  it("gives every customer a unique name", () => {
+    const dupes = db.prepare("SELECT name FROM customers GROUP BY name HAVING COUNT(*) > 1").all();
+    expect(dupes).toEqual([]);
+  });
+
   it("leaves today empty for live demos", () => {
     expect(listBookings(db, { from: TODAY, to: TODAY })).toHaveLength(0);
   });
